@@ -1,4 +1,4 @@
-package orgiesalandalusprogramaciondamas;
+Mpackage orgiesalandalusprogramaciondamasmodelo;
 
 public enum Direccion {
     NORESTE("Noreste"), SURESTE("Sureste"), SUROESTE("Suroeste"), NOROESTE("Noroeste");
