@@ -20,8 +20,7 @@ public class Posicion {
         return columna;
     }
 
-    @Override
-    public  
+    @Override public
     boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -31,8 +30,7 @@ public class Posicion {
 
     @Override
     public int hashCode() {
-        return  
-        31 * fila + columna;
+        return 31 * fila + columna;
     }
 
     @Override
