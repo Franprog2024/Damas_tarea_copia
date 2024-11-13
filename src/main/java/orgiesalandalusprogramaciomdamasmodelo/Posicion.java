@@ -1,17 +1,25 @@
 package orgiesalandalusprogramaciomdamasmodelo;
 
 public class Posicion {
-    private final int fila;
-    private final char columna;
+    private int fila;
+    private char columna;
 
+    // Constructor que acepta fila y columna
     public Posicion(int fila, char columna) {
-        if (fila < 1 || fila > 8 || columna < 'a' || columna > 'h') {
-            throw new IllegalArgumentException("Posición inválida");
-        }
-        this.fila = fila;
-        this.columna = columna;
+        setFila(fila);
+        setColumna(columna);
     }
 
+    // Constructor copia
+    public Posicion(Posicion otraPosicion) {
+        if (otraPosicion == null) {
+            throw new IllegalArgumentException("La posición no puede ser nula.");
+        }
+        this.fila = otraPosicion.fila;
+        this.columna = otraPosicion.columna;
+    }
+
+    // Metodos get
     public int getFila() {
         return fila;
     }
@@ -20,19 +28,38 @@ public class Posicion {
         return columna;
     }
 
-    @Override public
-    boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Posicion posicion = (Posicion) o;
+    // Metodos set con validaciones
+    public void setFila(int fila) {
+        if (fila < 1 || fila > 8) {
+            throw new IllegalArgumentException("La fila debe estar entre 1 y 8.");
+        }
+        this.fila = fila;
+    }
+
+    public void setColumna(char columna) {
+        if (columna < 'a' || columna > 'h') {
+            throw new IllegalArgumentException("La columna debe estar entre 'a' y 'h'.");
+        }
+        this.columna = columna;
+    }
+
+    // Metodos equals y hashCode
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Posicion posicion = (Posicion) obj;
         return fila == posicion.fila && columna == posicion.columna;
     }
 
     @Override
     public int hashCode() {
-        return 31 * fila + columna;
+        int result = Integer.hashCode(fila);
+        result = 31 * result + Character.hashCode(columna);
+        return result;
     }
 
+    // Metodo toString
     @Override
     public String toString() {
         return "fila=" + fila + ", columna=" + columna;
